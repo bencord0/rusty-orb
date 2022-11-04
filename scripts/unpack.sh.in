@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Locate the end of this header
+MARKER="$(awk '/^__MARKER__/ { print NR + 1; exit 0; }' "${0}")"
+
+# Unpack / decode the tarball inplace
+tail -n "+${MARKER}" "${0}" | base64 -d | tar -xvz
+
+exit 0
+__MARKER__

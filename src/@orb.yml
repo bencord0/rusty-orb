@@ -1,0 +1,8 @@
+version: 2.1
+
+description: >
+  A demonstration to write orbs in rust
+
+display:
+  home_url: "https://github.com/bencord0/rusty-orb"
+  source_url: "https://github.com/bencord0/rusty-orb"

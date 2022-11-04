@@ -1,0 +1,12 @@
+description: >
+  Send a greeting, using rust
+
+parameters:
+  to:
+    type: string
+    default: "World"
+    description: "Hello to whom?"
+
+steps:
+  - hello:
+      to: << parameters.to >>

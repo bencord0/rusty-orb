@@ -1,0 +1,13 @@
+description: >
+  Send a greeing using a rust binary.
+
+usage:
+  version: 2.1
+
+  orbs:
+    rusty: bencord0/rusty-orb@0.1.0
+
+  workflows:
+    greetings:
+      jobs:
+        - rusty/hello
