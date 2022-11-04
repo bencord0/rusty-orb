@@ -13,7 +13,6 @@ filters: &filters
 workflows:
   lint-pack:
     jobs:
-      - build-rust-binaries
       - orb-tools/lint:
           filters: *filters
       - orb-tools/pack:
