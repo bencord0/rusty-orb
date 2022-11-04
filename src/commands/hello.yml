@@ -9,11 +9,7 @@ parameters:
 
 steps:
   - run:
-      name: Unpack Binaries
-      command: <<include(workspace/scripts/unpack.sh)>>
-
-  - run:
       environment:
         PARAM_TO: <<parameters.to>>
       name: Hello Greeting
-      command: ./target/release/hello
+      command: hello

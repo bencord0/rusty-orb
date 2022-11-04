@@ -2,13 +2,17 @@ description: >
   Send a greeting, using rust
 
 docker:
-  - image: circleci/circleci-cli:latest
+  - image: ghcr.io/bencord0/rusty-orb:<<parameters.version>>
 
 parameters:
   to:
     type: string
     default: "World"
     description: "Hello to whom?"
+  version:
+    type: string
+    default: production
+    description: "Version of the binaries to use"
 
 steps:
   - hello:

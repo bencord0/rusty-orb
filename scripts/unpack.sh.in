@@ -1,6 +1,0 @@
-#!/bin/bash
-
-# Unpack / decode the tarball inplace
-(
-    base64 -d | tar -xvz
-) <<< \

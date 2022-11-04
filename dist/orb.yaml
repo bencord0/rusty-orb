@@ -1,0 +1,53 @@
+version: 2.1
+description: |
+    A demonstration to write orbs in rust.
+    This orb works by embedding pre-compiled (and stripped) rust binaries into the orb yaml itself, and does not need further network calls to setup.
+display:
+    home_url: https://github.com/bencord0/rusty-orb
+    source_url: https://github.com/bencord0/rusty-orb
+commands:
+    hello:
+        description: |
+            This command echos "Hello World" using file inclusion.
+        parameters:
+            to:
+                default: World
+                description: Hello to whom?
+                type: string
+        steps:
+            - run:
+                command: hello
+                environment:
+                    PARAM_TO: <<parameters.to>>
+                name: Hello Greeting
+jobs:
+    hello:
+        description: |
+            Send a greeting, using rust
+        docker:
+            - image: ghcr.io/bencord0/rusty-orb:<<parameters.version>>
+        parameters:
+            to:
+                default: World
+                description: Hello to whom?
+                type: string
+            version:
+                default: production
+                description: Version of the binaries to use
+                type: string
+        steps:
+            - hello:
+                to: << parameters.to >>
+examples:
+    example:
+        description: |
+            Send a greeing using a rust binary.
+        usage:
+            version: "2.1"
+            orbs:
+                rusty: bencord0/rusty-orb@0.1.0
+            workflows:
+                greetings:
+                    jobs:
+                        - rusty/hello
+
