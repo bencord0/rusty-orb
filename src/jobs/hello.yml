@@ -1,6 +1,9 @@
 description: >
   Send a greeting, using rust
 
+docker:
+  - image: circleci/circleci-cli:latest
+
 parameters:
   to:
     type: string
