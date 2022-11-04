@@ -16,10 +16,12 @@ jobs:
       - image: cimg/rust:1.64.0
     steps:
       - checkout
-      - name: Cargo Build Binaries
-        run: |
-          cargo build --target-dir ./target --release --bins
-          ./scripts/pack.sh
+
+      - run:
+          name: Cargo Build Binaries
+          command: |
+            cargo build --target-dir ./target --release --bins
+            ./scripts/pack.sh
 
 workflows:
   lint-pack:
