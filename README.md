@@ -12,7 +12,7 @@ You can call the hello job directly in a workflow.
 version: 2.1
 
 orbs:
-  rusty: bencord0/rusty-orb@v1
+  rusty: bencord0/rusty-orb@1.0.0
 
 workflows:
   say-hi:
@@ -31,7 +31,7 @@ If not using the job, you can call the command in a custom job.
 version: 2.1
 
 orbs:
-  rusty: bencord0/rusty-orb@v1
+  rusty: bencord0/rusty-orb@1.0.0
 
 workflows:
   say-hi:
