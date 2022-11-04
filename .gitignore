@@ -3,3 +3,4 @@ orb.yml
 .DS_Store
 
 target
+dist
