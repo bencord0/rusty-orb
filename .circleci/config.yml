@@ -23,6 +23,11 @@ jobs:
             cargo build --target-dir ./target --release --bins
             ./scripts/pack.sh
 
+      - persist_to_workspace:
+          root: .
+          paths:
+            - src/scripts
+
 workflows:
   lint-pack:
     jobs:
@@ -31,6 +36,9 @@ workflows:
           filters: *filters
       - orb-tools/pack:
           filters: *filters
+          attach-workspace: true
+          requires:
+            - build-rust-binaries
       - orb-tools/review:
           filters: *filters
       - shellcheck/check:
