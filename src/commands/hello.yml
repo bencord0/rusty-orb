@@ -9,7 +9,8 @@ parameters:
 
 steps:
   - run:
-      environment:
-        PARAM_TO: <<parameters.to>>
       name: Hello Greeting
       shell: /usr/local/cargo/bin/hello
+      command: ""
+      environment:
+        PARAM_TO: <<parameters.to>>
