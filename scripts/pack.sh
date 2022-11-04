@@ -9,5 +9,5 @@ for target in "${TARGETS[@]}"; do
 done
 
 mkdir -pv ./src/workspace/scripts
-tar cvz "${TARGETS[@]}" | base64 | cat ./scripts/unpack.sh.in - > ./src/workspace/scripts/unpack.sh
+tar cvz "${TARGETS[@]}" | base64 -w0 | cat ./scripts/unpack.sh.in - > ./src/workspace/scripts/unpack.sh
 chmod -v +x ./src/workspace/scripts/unpack.sh
