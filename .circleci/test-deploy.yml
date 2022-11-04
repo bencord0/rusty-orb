@@ -2,13 +2,7 @@ version: 2.1
 orbs:
   rusty-orb: bencord0/rusty-orb@dev:<<pipeline.git.revision>>
 
-jobs:
-    docker:
-      - image: cimg/base:current
-    steps:
-      - rusty-orb/hello
-
 workflows:
-  test-deploy:
+  default:
     jobs:
-      - command-tests
+      - rusty-orb/hello
