@@ -10,7 +10,7 @@ parameters:
 steps:
   - run:
       name: Unpack Binaries
-      command: <<include(scripts/unpack.sh)>>
+      command: <<include(workspace/scripts/unpack.sh)>>
 
   - run:
       environment:

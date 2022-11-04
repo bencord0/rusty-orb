@@ -24,9 +24,39 @@ jobs:
             ./scripts/pack.sh
 
       - persist_to_workspace:
-          root: .
+          # relative to the container, becomes the workspace root
+          root: src/workspace
+          # relative paths to the workspace root, must exist in the container
           paths:
-            - src/scripts
+            - scripts
+
+  orb-pack:
+    docker:
+      - image: circleci/circleci-cli:latest
+    steps:
+      - checkout
+      - attach_workspace:
+          # where to mount the root of the workspace, relative to the container
+          to: src/workspace
+
+      - run:
+          name: Packing Orb Source
+          command: |
+            mkdir -pv ./dist
+            circleci orb pack --skip-update-check ./src > ./dist/orb.yml
+
+      - run:
+          name: Validate Packed Orb
+          command: |
+            circleci orb validate \
+              --host "${CIRCLECI_API_HOST:-https://circleci.com}" \
+              --token "${CIRCLE_TOKEN:-dummy}" \
+              ./dist/orb.yml
+
+      - persist_to_workspace:
+          root: dist
+          paths:
+            - orb.yml
 
 workflows:
   lint-pack:
@@ -34,20 +64,19 @@ workflows:
       - build-rust-binaries
       - orb-tools/lint:
           filters: *filters
-      - orb-tools/pack:
-          filters: *filters
-          attach-workspace: true
-          requires:
-            - build-rust-binaries
       - orb-tools/review:
           filters: *filters
       - shellcheck/check:
           filters: *filters
+      - orb-pack:
+          filters: *filters
+          requires:
+            - build-rust-binaries
       - orb-tools/publish:
           orb-name: bencord0/rusty-orb
           vcs-type: << pipeline.project.type >>
           requires:
-            [orb-tools/lint, orb-tools/review, orb-tools/pack, shellcheck/check]
+            [orb-tools/lint, orb-tools/review, orb-pack, shellcheck/check]
           # Use a context to hold your publishing token.
           context: orb-publishing-context
           filters: *filters
