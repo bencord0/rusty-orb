@@ -35,9 +35,10 @@ jobs:
       - image: circleci/circleci-cli:latest
     steps:
       - checkout
+
       - attach_workspace:
           # where to mount the root of the workspace, relative to the container
-          to: src/workspace
+          at: src/workspace
 
       - run:
           name: Packing Orb Source
