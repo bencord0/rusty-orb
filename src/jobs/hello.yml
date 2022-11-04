@@ -1,18 +1,13 @@
 description: >
   Send a greeting, using rust
 
-docker:
-  - image: ghcr.io/bencord0/rusty-orb:<<parameters.version>>
+executor: default
 
 parameters:
   to:
     type: string
     default: "World"
     description: "Hello to whom?"
-  version:
-    type: string
-    default: v1
-    description: "Version of the binaries to use"
 
 steps:
   - hello:

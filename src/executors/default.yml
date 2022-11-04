@@ -1,0 +1,13 @@
+description: >
+  The rusty-orb docker image which includes our binaries
+
+parameters:
+  tag:
+    type: string
+    default: v1
+    description: >
+      The version of the docker image to use
+      see https://github.com/bencord0/rusty-orb/pkgs/container/rusty-orb/
+
+docker:
+  - image: ghcr.io/bencord0/rusty-orb:<<parameters.tag>>

@@ -5,9 +5,9 @@ usage:
   version: 2.1
 
   orbs:
-    rusty: bencord0/rusty-orb@0.1.0
+    rusty: bencord0/rusty-orb@v1
 
   workflows:
-    greetings:
+    say-hi:
       jobs:
         - rusty/hello

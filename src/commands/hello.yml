@@ -12,4 +12,4 @@ steps:
       environment:
         PARAM_TO: <<parameters.to>>
       name: Hello Greeting
-      command: hello
+      shell: /usr/local/cargo/bin/hello
