@@ -16,6 +16,11 @@ jobs:
         with:
           images: |
             ghcr.io/${{ github.repository_owner }}/rusty-orb
+          tags: |
+            type=ref,event=branch
+            type=sha
+            type=semver,pattern=v{{major}}
+            type=semver,pattern=v{{major}}.{{minor}}
 
       - if: ${{ github.event_name != 'pull_request' }}
         uses: docker/login-action@v2

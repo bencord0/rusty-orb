@@ -11,7 +11,7 @@ parameters:
     description: "Hello to whom?"
   version:
     type: string
-    default: production
+    default: v1
     description: "Version of the binaries to use"
 
 steps:
