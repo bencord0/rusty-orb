@@ -1,0 +1,23 @@
+description: >
+  Resume a generated pipeline
+
+executor: default
+
+parameters:
+
+  configuration:
+    type: string
+    description: >
+      Path, relative to the workspace root, for the next pipeline's config
+
+  parameters:
+    type: string
+    default: ""
+    description: >
+      (optional) Path, relative to the workspace root, of pipeline parameters in yaml format.
+
+steps:
+
+  - continue:
+      configuration: << parameters.configuration >>
+      parameters: << parameters.parameters >>

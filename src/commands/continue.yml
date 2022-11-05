@@ -1,0 +1,21 @@
+description: >
+  This command resumes a generated circleci pipeline.
+
+parameters:
+  configuration:
+    type: string
+    description: Path to the generated circleci pipeline config
+  parameters:
+    type: string
+    description: Path to the parameters (in yaml format) to pass to the triggered pipeline
+
+steps:
+  - attach_workspace:
+      at: .
+
+  - run:
+      name: Continue Pipeline
+      command: exec /usr/local/cargo/bin/continuation
+      environment:
+        PARAM_CONFIGURATION: << parameters.configuration >>
+        PARAM_PARAMETERS: << parameters.parameters >>
