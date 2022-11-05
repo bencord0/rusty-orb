@@ -12,7 +12,6 @@ parameters:
 
   parameters:
     type: string
-    default: ""
     description: >
       (optional) Path, relative to the workspace root, of pipeline parameters in yaml format.
 

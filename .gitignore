@@ -4,3 +4,4 @@ orb.yml
 
 target
 dist
+generated-config

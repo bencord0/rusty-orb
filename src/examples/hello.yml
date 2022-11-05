@@ -1,11 +1,11 @@
 description: >
-  Send a greeing using a rust binary.
+  Send a greeting using a rust binary.
 
 usage:
   version: 2.1
 
   orbs:
-    rusty: bencord0/rusty-orb@v1
+    rusty: bencord0/rusty-orb@1.0.0
 
   workflows:
     say-hi:
