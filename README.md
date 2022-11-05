@@ -80,6 +80,11 @@ workflows:
           my_parameter: << pipeline.parameters.my_parameter >>
 ```
 
+```yaml
+# ./generated-config/parameters.yml
+my_parameter: foo
+```
+
 ## commands
 
 ### `rusty/hello`
